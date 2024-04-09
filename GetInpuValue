@@ -1,0 +1,12 @@
+import {useState} from 'react';
+import {View, TextInput, Text} from 'react-native';
+const GetTextValue = () => {
+  const [name, setname] = useState('');
+  return (
+    <View>
+      <Text>{name}</Text>
+      <TextInput placeholder="name" onChangeText={e => setname(e)} />
+    </View>
+  );
+};
+export default GetTextValue;
