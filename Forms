@@ -1,0 +1,76 @@
+import {useState} from 'react';
+import {TextInput, View, Text, StyleSheet,Button} from 'react-native';
+import Pressable from 'react-native/Libraries/Components/Pressable/Pressable';
+
+const SimpleForm = () => {
+  const [name, setname] = useState('');
+  const [email, setemail] = useState('');
+  const [password, setpassword] = useState('');
+  const [confirmpassword, setconfirmpassword] = useState('');
+  const [Display, setDisplay] = useState(false);
+
+  resetformdata = () =>{
+    setname("")
+    setemail("")
+    setpassword("")
+    setconfirmpassword("")
+    setDisplay(false)
+  }
+  return (
+    <View style={{padding: 20}}>
+      <Text style={{fontSize: 50, textAlign: 'center'}}>Simple Form</Text>
+      <TextInput placeholder="Name" style={style.textinput} value={name} onChangeText={(e) => setname(e)} />
+      <TextInput placeholder="Email" value={email} style={style.textinput} onChangeText={(e) => setemail(e)} />
+      <TextInput
+        placeholder="Password"
+        secureTextEntry={true}
+        style={style.textinput}
+        value={password}
+        onChangeText={(e) => setpassword(e)}
+      />
+      <TextInput
+        placeholder="ConfirmPassword"
+        value={confirmpassword}
+        style={style.textinput}
+        onChangeText={(e) => setconfirmpassword(e)}
+      />
+        <View style={{paddingLeft:30,paddingRight:30}}>
+            <View style={{marginBottom: 10}}>
+            <Button title='GetValue' onPress={() => setDisplay(true)} />
+            </View>
+            <View>
+            <Button title='Reset' onPress={resetformdata} />
+            </View>
+            
+        </View>
+      <View>
+        {Display ? (
+          <View>
+            <Text>{name}</Text>
+            <Text>{email}</Text>
+            <Text>{password}</Text>
+            <Text>{confirmpassword}</Text>
+          </View>
+        ) : null}
+      </View>
+    </View>
+  );
+};
+const style = StyleSheet.create({
+  textinput: {
+    paddingLeft: 20,
+    paddingRight: 5,
+    borderColor: 'black',
+    borderRadius: 5,
+    borderWidth: 2,
+    margin: 10,
+  },
+  ButtonStyle: {
+    backgroundColor: '#f2f2f2',
+    padding: 10,
+    borderRadius: 5,
+    textAlign: 'center',
+    margin: 10,
+  },    
+});
+export default SimpleForm;
