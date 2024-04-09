@@ -1,0 +1,18 @@
+import React, {useState} from 'react';
+
+import {Text, View, Button} from 'react-native';
+
+const App = () => {
+  const [name, setname] = useState('Mangal');
+ function testname(){
+    setname("Mangal singh ")
+  }
+  return (
+    <View>
+      <Text>{name}</Text>
+      <Button title="Name" onPress={testname}/>
+    </View>
+  );
+};
+
+export default App;
