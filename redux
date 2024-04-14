@@ -41,4 +41,4 @@ export const store = configureStore({
   };
 //get the data
 
-  const store = useSelector((state: any) => console.warn(state.Datepicker.data));
+  const store = useSelector((state: any) => return state.Datepicker.data);
