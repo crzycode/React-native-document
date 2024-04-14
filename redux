@@ -1,0 +1,44 @@
+//create action 
+export function Datepicker_action(item:any){
+    return{  type:"Datepicker",value:item}
+}
+
+// create reducer
+
+export const Datepicker_reducer = (state = [],action:any) =>{
+    return{
+        ...state,
+        data:action.value
+    }
+}
+
+//create root reducer
+import { combineReducers } from "redux";
+import { Datepicker_reducer } from "./Reducer";
+
+export const rootReducer = combineReducers({
+    Datepicker:Datepicker_reducer
+})
+
+// store configurationm
+
+import { configureStore, createStore } from "@reduxjs/toolkit";
+import { rootReducer } from "./Rootreducer";
+export const store = configureStore({
+    reducer:rootReducer
+}  
+)
+// final step
+<Provider store={store}>
+<App />
+</Provider>
+
+//how to use
+//dispatch the action
+ const dispatch = useDispatch();
+  const showDatepicker = () => {
+    dispatch(Datepicker_action(true));
+  };
+//get the data
+
+  const store = useSelector((state: any) => console.warn(state.Datepicker.data));
